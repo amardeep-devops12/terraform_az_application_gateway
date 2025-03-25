@@ -3,7 +3,7 @@ resource "azurerm_storage_account" "diag_storage" {
   resource_group_name      = var.resource_group
   location                 = var.region
   account_tier             = var.storage_account_tier
-  account_replication_type = "LRS"
+  account_replication_type = var.storage_account_replication
 }
 
 resource "random_string" "suffix" {

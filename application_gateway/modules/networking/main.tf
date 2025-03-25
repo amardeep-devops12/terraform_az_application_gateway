@@ -1,9 +1,11 @@
+# Resource group
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group
   location = var.region
 
 }
 
+# Virtual network
 resource "azurerm_virtual_network" "vnet" {
   name                = var.vnet_name
   location            = azurerm_resource_group.rg.location
@@ -11,6 +13,7 @@ resource "azurerm_virtual_network" "vnet" {
   address_space       = [var.vnet_cidr]
 }
 
+# Public Subnets
 resource "azurerm_subnet" "public" {
   count                = var.public_subnet_count
   name                 = "public-subnet-${count.index}"
@@ -19,6 +22,7 @@ resource "azurerm_subnet" "public" {
   address_prefixes     = ["10.0.${count.index}.0/24"]
 }
 
+# Private Subnets
 resource "azurerm_subnet" "private" {
   count                = var.private_subnet_count
   name                 = "private-subnet-${count.index}"
@@ -96,7 +100,7 @@ resource "azurerm_subnet_network_security_group_association" "main" {
   network_security_group_id = azurerm_network_security_group.main.id
 }
 
-## Identity
+## Identity for application gateway
 resource "azurerm_user_assigned_identity" "user_id" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location

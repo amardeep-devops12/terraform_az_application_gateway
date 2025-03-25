@@ -4,15 +4,16 @@ vnet_name         = "test"
 vnet_cidr        = "10.0.0.0/16"
 public_subnet_count  = 2
 private_subnet_count = 2
-app_gw_name = "test"
 diagnostic_name = "newonediag"
 log_analytics_workspace_name = "log-workspace"
 log_sku = "PerGB2018"
 storage_account_tier = "Standard"
+storage_account_replication = "LRS"
 nsg_name = "nsgforsubnet"
 user_identity = "testing"
 
 # application gateway
+app_gw_name = "test"
 sku = {
   name     = "Standard_v2"
   tier     = "Standard_v2"

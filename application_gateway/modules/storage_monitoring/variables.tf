@@ -9,3 +9,7 @@ variable "region" {
 variable "storage_account_tier" {
   type = string
 }
+
+variable "storage_account_replication" {
+  type = string
+}

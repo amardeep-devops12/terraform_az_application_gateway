@@ -32,6 +32,9 @@ variable "diagnostic_name" {
   type = string
 }
 
+variable "storage_account_replication" {
+  type = string
+}
 variable "log_analytics_workspace_name" {
   description = "The name of log analytics workspace name"
   default     = null
